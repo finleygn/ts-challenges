@@ -27,49 +27,18 @@
 
 /* _____________ Your Code Here _____________ */
 
-type CharMap = {
-  'a': "A",
-  'b': "B",
-  'c': "C",
-  'd': "D",
-  'e': "E",
-  'f': "F",
-  'g': "G",
-  'h': "H",
-  'i': "I",
-  'j': "J",
-  'k': "K",
-  'l': "L",
-  'm': "M",
-  'n': "N",
-  'o': "O",
-  'p': "P",
-  'q': "Q",
-  'r': "R",
-  's': "S",
-  't': "T",
-  'u': "U",
-  'v': "V",
-  'w': "W",
-  'x': "X",
-  'y': "Y",
-  'z': "Z",
-}
-
-type GetChar<T extends keyof CharMap> = CharMap[T];
-
 type CamelWord<T> = T extends `${infer S}_${infer C}${infer R}`
-  ? CamelWord<`${S}${C extends keyof CharMap ? GetChar<C> : C}${R}`>
+  ? CamelWord<`${S}${Capitalize<C>}${R}`>
   : T;
 
+type CamelizeConditional<V> = V extends object
+  ? Camelize<V>
+  : V
+
 type Camelize<T> = T extends any [] ? {
-  [K in keyof T]: T[K] extends object
-    ? Camelize<T[K]>
-    : T[K]
+  [K in keyof T]: CamelizeConditional<T[K]>
 } : {
-  [K in keyof T as CamelWord<K>]: T[K] extends object
-    ? Camelize<T[K]>
-    : T[K]
+  [K in keyof T as CamelWord<K>]: CamelizeConditional<T[K]>
 }
 
 /* _____________ Test Cases _____________ */
