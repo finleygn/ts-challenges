@@ -6,3 +6,8 @@
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@type-challenges/utils/-/utils-0.1.1.tgz#18ce289fb84caf1c13eee211226dbf2bc6195ed3"
   integrity sha512-A7ljYfBM+FLw+NDyuYvGBJiCEV9c0lPWEAdzfOAkb3JFqfLl0Iv/WhWMMARHiRKlmmiD1g8gz/507yVvHdQUYA==
+
+ts-arithmetic@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ts-arithmetic/-/ts-arithmetic-0.1.1.tgz#d99bc2b5c68ec00f5226ec93ff679af644cf78e0"
+  integrity sha512-3VqgsRgzaYfj+zKWn+7O66ifHwbOOnT2BoOrHwdEUBz7az0DetoZOS20+juNJh1klgzvWEi2Qxden41pomOUAQ==
