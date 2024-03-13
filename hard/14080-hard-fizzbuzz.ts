@@ -31,7 +31,7 @@ type Length<T extends unknown[]> =
     T extends { length: infer L } ? L : never;
 
 type BuildTuple<L extends number, T extends unknown[] = []> = 
-    T extends { length: L } ? T : BuildTuple<L, [...T, unknown]>;
+  Length<T> extends L ? T : BuildTuple<L, [...T, unknown]>;
 
 type Add<A extends number, B extends number> = 
     [...BuildTuple<A>, ...BuildTuple<B>];
@@ -68,6 +68,8 @@ type FizzBuzz<L extends number, T extends unknown[] = []> =
         ? FizzBuzz<L, [...T, GetString<LL>]>
         : never
       : never;
+
+type Result = FizzBuzz<20>;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
